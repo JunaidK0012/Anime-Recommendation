@@ -1,0 +1,91 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("goku.jpg"); /* Replace "sasuke.jpg" with the actual path to your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+  
+  header {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 100;
+    font-size: large;
+    text-align: center;
+    color: aliceblue;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .search-bar {
+    margin-bottom: 30px;
+    margin-left: 370px;
+    padding-top: 50px;
+  }
+  
+  .search-bar label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .search-bar select,
+  .search-bar input[type="text"] {
+    width: 35%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .search-bar button {
+    background-color: #e40f0f;
+    color: white;
+    padding: 10px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .recommendations {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  
+  .recommendations h2 {
+    margin-bottom: 10px;
+  }
+  
+  #recommendation-list {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Make items display side-by-side */
+  }
+  
+  #recommendation-list li.recommendation-item {
+    margin-bottom: 10px;
+    margin-right: 10px; /* Adjust spacing between items */
+    width: calc(20% - 10px); /* Adjust width based on desired number of images (change 20% as needed) */
+  }
+  
+  #recommendation-list li.recommendation-item img {
+    width: 70%; /* Set image width to match recommendation item width */
+    height: 250px; /* Maintain aspect ratio */
+  }
+  
+  .recommendation-title {
+    font-size: 0.8em; /* Reduce title font size */
+    margin-top: 5px; /* Add spacing between image and title */
+    text-align: center; /* Center title text */
+    
+  }
+
+  h2{
+    color: aliceblue;
+  }
+  

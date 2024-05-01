@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Recommendation System</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+  <header>
+    <h1>ANIME RECOMMENDATION SYSTEM</h1>
+  </header>
+  <main>
+    <section class="search-bar">
+      <form id="search-form" action="{{ url_for('predict')}}" method="post">
+        <input type="text" name="watched" id="watched" placeholder="Enter anime title">
+        <button type="submit">Get Recommendations</button>
+      </form>
+    </section>
+    <section class="recommendations">
+      <h2>Recommended Anime</h2>
+      <ul id="recommendation-list">
+        {% for recommendation in recommendations %}
+          <li class="recommendation-item">
+            <img src="{{ recommendation['Image URL'] }}" alt="{{ recommendation['Name'] }}">
+            <h3 class="recommendation-title">{{ recommendation.Name }}</h3>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
