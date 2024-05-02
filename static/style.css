@@ -2,11 +2,11 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url("goku.jpg"); /* Replace "sasuke.jpg" with the actual path to your image */
+    background-image: url("luffy.png"); /* Replace "sasuke.jpg" with the actual path to your image */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
+    background-repeat:repeat;
+
   }
   
   header {
@@ -27,9 +27,9 @@ body {
   }
   
   .search-bar {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-left: 370px;
-    padding-top: 50px;
+    padding-top: 20px;
   }
   
   .search-bar label {
@@ -54,7 +54,7 @@ body {
   
   .recommendations {
     border-top: 1px solid #ccc;
-    padding-top: 20px;
+    padding-top: 15px;
   }
   
   .recommendations h2 {
@@ -63,26 +63,27 @@ body {
   
   #recommendation-list {
     list-style: none;
-    padding: 0;
+    padding: 10px;
     display: flex; /* Make items display side-by-side */
   }
   
   #recommendation-list li.recommendation-item {
-    margin-bottom: 10px;
-    margin-right: 10px; /* Adjust spacing between items */
-    width: calc(20% - 10px); /* Adjust width based on desired number of images (change 20% as needed) */
+    margin-bottom: 10px; /* Adjust spacing between items */
+    width: 40%; /* Adjust width based on desired number of images (change 20% as needed) */
   }
   
   #recommendation-list li.recommendation-item img {
-    width: 70%; /* Set image width to match recommendation item width */
-    height: 250px; /* Maintain aspect ratio */
+    width: 90%; /* Set image width to match recommendation item width */
+    height: 150px; /* Maintain aspect ratio */
+    border-radius: 5px;
   }
   
   .recommendation-title {
-    font-size: 0.8em; /* Reduce title font size */
+    font-size: 1em; /* Reduce title font size */
     margin-top: 5px; /* Add spacing between image and title */
-    text-align: center; /* Center title text */
-    
+    text-align:center; /* Center title text */
+    font-family: 'Times New Roman', Times, serif;
+    color: aliceblue;
   }
 
   h2{

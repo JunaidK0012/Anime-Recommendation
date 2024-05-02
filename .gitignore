@@ -160,6 +160,6 @@ cython_debug/
 #.idea/
 
 
-anime_list.pkl 
+anime.pkl 
 similarity.pkl 
 anime-dataset-2023.csv

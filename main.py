@@ -8,7 +8,7 @@ app = Flask(__name__)
 animes = pickle.load(open('anime_list.pkl','rb'))
 
 anime_list = animes['Name'].values
-x = animes.sort_values(by = 'Popularity').head()
+x = animes.sort_values(by = 'Popularity').head(10)
 
 recommendations_list = x.to_dict('records')
 
