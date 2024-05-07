@@ -15,15 +15,15 @@
       {% if selected %}
       <div class="selected-anime">
         <div class="anime-image">
-          <img src="{{ selected['Image URL'] }}" alt="{{ selected['Name'] }}">
+          <img src="{{ selected['image'] }}" alt="{{ selected['title'] }}">
         </div>
         <div class="anime-info">
-          <h3>{{ selected['Name'] }}</h3>
-          <p>{{ selected['Synopsis'] }}</p>
+          <h3>{{ selected['title'] }}</h3>
+          <p>{{ selected['synopsis'] }}</p>
           <ul class="anime-details">
-            <li>Episodes: {{ selected['Episodes'] }}</li>
-            <li>Type: {{ selected['Type'] }}</li>
-            <li>Duration: {{ selected['Duration'] }}</li>
+            <li>Episodes: {{ selected['episodes'] }}</li>
+            <li>Type: {{ selected['type'] }}</li>
+            <li>Duration: {{ selected['duration'] }}</li>
           </ul>
         </div>
       </div>

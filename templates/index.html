@@ -23,9 +23,9 @@
       <ul id="recommendation-list">
         {% for anime in popular %}
           <li class="recommendation-item">
-            <a href="#" onclick="setWatchedAndSubmit('{{ anime.Name }}')">
-              <img src="{{ anime['Image URL'] }}" alt="{{ anime['Name'] }}">
-            <h3 class="recommendation-title">{{ anime.Name }}</h3>
+            <a href="#" onclick="setWatchedAndSubmit('{{ anime.title }}')">
+              <img src="{{ anime['image'] }}" alt="{{ anime['title'] }}">
+            <h3 class="recommendation-title">{{ anime.title }}</h3>
             </a>
           </li>
         {% endfor %}
@@ -34,9 +34,9 @@
       <ul id="recommendation-list">
         {% for anime in popular_movie %}
           <li class="recommendation-item">
-            <a href="#" onclick="setWatchedAndSubmit('{{ anime.Name }}')">
-              <img src="{{ anime['Image URL'] }}" alt="{{ anime['Name'] }}">
-            <h3 class="recommendation-title">{{ anime.Name }}</h3>
+            <a href="#" onclick="setWatchedAndSubmit('{{ anime.title }}')">
+              <img src="{{ anime['image'] }}" alt="{{ anime['title'] }}">
+            <h3 class="recommendation-title">{{ anime.title }}</h3>
             </a>
           </li>
         {% endfor %}

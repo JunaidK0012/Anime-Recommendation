@@ -10,20 +10,20 @@ similarity = pickle.load(open('similarity.pkl','rb'))
 
 
 def recommend(anime):
-    index = animes[animes['Name'] == anime].index[0]
+    index = animes[animes.title == anime].index[0]
     distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
     recommended_animes = []
     for i in distances[1:11]:
         anime_data = animes.iloc[i[0]]
-        recommended_animes.append({'Name': anime_data.Name, 'Image': anime_data['Image URL'] , 'Synopsis': anime_data.Synopsis})
+        recommended_animes.append({'Name': anime_data.title, 'Image': anime_data.image , 'Synopsis': anime_data.synopsis})
     return recommended_animes
 
 def selected(anime):
-    sel = animes[animes['Name'] == anime]
+    sel = animes[animes.title == anime]
     return sel.to_dict('records')[0]
 
-x = animes.sort_values(by = 'Popularity').head(10)
-y = animes[animes.Type == 'Movie'].sort_values(by = 'Popularity').head(10)
+x = animes.sort_values(by = 'popularity').head(10)
+y = animes[animes.type == 'Movie'].sort_values(by = 'popularity').head(10)
 
 popular = x.to_dict('records')
 popular_movie = y.to_dict('records')

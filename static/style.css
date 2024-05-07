@@ -90,30 +90,46 @@ body {
   h2{
     color: aliceblue;
   }
+
   .selected-anime {
-    display: flex; /* Make the elements within this div display side-by-side */
-    margin-bottom: 10px;
+    /* Use flexbox for layout */
+    display: flex;
+    /* Align items vertically in the center */
+    margin: 10px;
     padding: 10px;
-  }
-  
-  .anime-image {
-    margin-right: 20px; /* Add spacing between image and synopsis */
-    margin-left: 5px;
-  }
-  
-  .anime-info {
-   
-    margin-top: -20px;
+    color: aliceblue;
     font-size:large;
  
     font-family:Georgia, 'Times New Roman', Times, serif;
-    color: aliceblue;
-    
-  }
+}
+
+.anime-image {
+    /* Adjust the width as needed */
+    width: 30%;
+    /* Add some space between the image and the info */
+    height: auto;
+}
+.anime-image img {
+  /* Set the width of the image */
+  width: 70%;  /* adjust as needed */
   
-  .anime-details {
-    list-style: none;
-    padding: 0;
-    margin: 0; /* Remove default list styling */
-  }
+  /* To maintain the aspect ratio of the image, 
+     you can set the height to auto */
+  height: auto;
+}
+
+
+
+.anime-info {
+  width: 100%;
+   
+  margin-top: -20px;
+  margin-left: -40px;
   
+}
+
+.anime-details {
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Remove default list styling */
+}
