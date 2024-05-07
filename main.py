@@ -5,19 +5,44 @@ import pandas
 
 app = Flask(__name__)
 
-animes = pickle.load(open('anime_list.pkl','rb'))
+animes = pickle.load(open('anime.pkl','rb'))
+similarity = pickle.load(open('similarity.pkl','rb'))
 
-anime_list = animes['Name'].values
+
+def recommend(anime):
+    index = animes[animes['Name'] == anime].index[0]
+    distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
+    recommended_animes = []
+    for i in distances[1:11]:
+        anime_data = animes.iloc[i[0]]
+        recommended_animes.append({'Name': anime_data.Name, 'Image': anime_data['Image URL'] , 'Synopsis': anime_data.Synopsis})
+    return recommended_animes
+
+def selected(anime):
+    sel = animes[animes['Name'] == anime]
+    return sel.to_dict('records')[0]
+
 x = animes.sort_values(by = 'Popularity').head(10)
+y = animes[animes.Type == 'Movie'].sort_values(by = 'Popularity').head(10)
 
-recommendations_list = x.to_dict('records')
+popular = x.to_dict('records')
+popular_movie = y.to_dict('records')
 
 
-@app.route('/', methods = ['GET','POST'] )
+@app.route('/', methods=['GET', 'POST'])
 def predict():
-    if request.method == "GET":
-        return render_template('index.html',recommendations = recommendations_list)
-    
+  if request.method == "GET":
+    return render_template('index.html', popular=popular,popular_movie = popular_movie)
+
+  else:
+    anime = request.form.get("watched")
+    if anime:  # Check if 'watched' parameter exists in POST request
+      sel = selected(anime)
+      ra = recommend(anime)
+      return render_template('page.html', selected=sel, recommendations=ra)
+    else:
+      # Handle case where no anime is selected in the POST request
+      return render_template('page.html', selected=None, recommendations=[])
 
 
 

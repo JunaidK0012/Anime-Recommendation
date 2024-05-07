@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Recommendation System</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+  <header>
+    <h1>ANIME RECOMMENDATION SYSTEM</h1>
+  </header>
+  <main>
+    <section class="intro">
+      {% if selected %}
+      <div class="selected-anime">
+        <div class="anime-image">
+          <img src="{{ selected['Image URL'] }}" alt="{{ selected['Name'] }}">
+        </div>
+        <div class="anime-info">
+          <h3>{{ selected['Name'] }}</h3>
+          <p>{{ selected['Synopsis'] }}</p>
+          <ul class="anime-details">
+            <li>Episodes: {{ selected['Episodes'] }}</li>
+            <li>Type: {{ selected['Type'] }}</li>
+            <li>Duration: {{ selected['Duration'] }}</li>
+          </ul>
+        </div>
+      </div>
+    {% else %}
+      <p>No anime selected yet.</p>
+    {% endif %}
+    
+    </section>
+    <section class="recommendations">
+      <h2>Recommended Anime</h2>
+      <ul id="recommendation-list">
+        {% for recommendation in recommendations %}
+        <li class="recommendation-item">
+          <form action="{{ url_for('predict') }}" method="post">
+            <input type="hidden" name="watched" value="{{ recommendation.Name }}">
+            <a href="#" onclick="submitForm(this)">
+              <img src="{{ recommendation.Image }}" alt="{{ recommendation['Name'] }}">
+            </a>
+            <h3 class="recommendation-title">{{ recommendation.Name }}</h3>
+          </form>
+        </li>
+      {% endfor %}
+      
+      </ul>
+    </section>
+  </main>
+  <script>
+    function submitForm(element) {
+      element.parentElement.submit(); // Submit the parent form of the clicked element
+    }
+    </script>
+</body>
+</html>

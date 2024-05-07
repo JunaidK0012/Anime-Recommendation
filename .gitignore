@@ -162,4 +162,4 @@ cython_debug/
 
 anime.pkl 
 similarity.pkl 
-anime-dataset-2023.csv
+anime_data.csv
