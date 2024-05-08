@@ -19,6 +19,17 @@
       </form>
     </section>
     <section class="recommendations">
+      <h2>Highest Rated</h2>
+      <ul id="recommendation-list">
+        {% for anime in best %}
+          <li class="recommendation-item">
+            <a href="#" onclick="setWatchedAndSubmit('{{ anime.title }}')">
+              <img src="{{ anime['image'] }}" alt="{{ anime['title'] }}">
+            <h3 class="recommendation-title">{{ anime.title }}</h3>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
       <h2>Popular Anime</h2>
       <ul id="recommendation-list">
         {% for anime in popular %}
@@ -41,6 +52,19 @@
           </li>
         {% endfor %}
       </ul>
+
+      <h2>For Children</h2>
+      <ul id="recommendation-list">
+        {% for anime in children %}
+          <li class="recommendation-item">
+            <a href="#" onclick="setWatchedAndSubmit('{{ anime.title }}')">
+              <img src="{{ anime['image'] }}" alt="{{ anime['title'] }}">
+            <h3 class="recommendation-title">{{ anime.title }}</h3>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+
     </section>
   </main>
   <script>

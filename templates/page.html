@@ -24,7 +24,23 @@
             <li>Episodes: {{ selected['episodes'] }}</li>
             <li>Type: {{ selected['type'] }}</li>
             <li>Duration: {{ selected['duration'] }}</li>
+           <li >Genres: {{ selected['genres']  }}</li>
+           <li >Rating: {{ selected['rating']  }}</li>
+           <li >Score: {{ selected['score']  }}</li>
+           <li >Themes: {{ selected['themes']  }}</li>
+
+
+            <li><a href="{{ selected['url'] }}" target="_blank">For more info....</a></li>
+
+
           </ul>
+          {% if selected['trailer'] != "no_trailer" %}
+          <div class="anime-trailer">
+            <h2>Trailer</h2>
+            <iframe width="450" height="250" src={{ selected['trailer'] }} frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          {% endif %}
+
         </div>
       </div>
     {% else %}

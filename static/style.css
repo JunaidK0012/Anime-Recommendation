@@ -55,6 +55,7 @@ body {
   .recommendations {
     border-top: 1px solid #ccc;
     padding-top: 15px;
+    margin-top: 100px;
   }
   
   .recommendations h2 {
@@ -74,7 +75,7 @@ body {
   
   #recommendation-list li.recommendation-item img {
     width: 90%; /* Set image width to match recommendation item width */
-    height: 150px; /* Maintain aspect ratio */
+    height: 180px; /* Maintain aspect ratio */
     border-radius: 5px;
   }
   
@@ -96,11 +97,11 @@ body {
     display: flex;
     /* Align items vertically in the center */
     margin: 10px;
-    padding: 10px;
-    color: aliceblue;
+    
+    color:aliceblue;
     font-size:large;
  
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family:monospace
 }
 
 .anime-image {
@@ -111,11 +112,11 @@ body {
 }
 .anime-image img {
   /* Set the width of the image */
-  width: 70%;  /* adjust as needed */
-  
+  width: 200px;  /* adjust as needed */
+  margin-top: 5px;
   /* To maintain the aspect ratio of the image, 
      you can set the height to auto */
-  height: auto;
+  height: 300px;
 }
 
 
@@ -132,4 +133,10 @@ body {
   list-style: none;
   padding: 0;
   margin: 0; /* Remove default list styling */
+}
+
+
+/* Show the anime-trailer div only when there's a link */
+.anime-trailer.has-trailer {
+  display: block;
 }

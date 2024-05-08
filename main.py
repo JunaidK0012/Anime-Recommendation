@@ -13,26 +13,30 @@ def recommend(anime):
     index = animes[animes.title == anime].index[0]
     distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
     recommended_animes = []
-    for i in distances[1:11]:
+    for i in distances[1:9]:
         anime_data = animes.iloc[i[0]]
-        recommended_animes.append({'Name': anime_data.title, 'Image': anime_data.image , 'Synopsis': anime_data.synopsis})
+        recommended_animes.append({'Name': anime_data.title, 'Image': anime_data.image})
     return recommended_animes
 
 def selected(anime):
     sel = animes[animes.title == anime]
     return sel.to_dict('records')[0]
 
-x = animes.sort_values(by = 'popularity').head(10)
-y = animes[animes.type == 'Movie'].sort_values(by = 'popularity').head(10)
+w = animes.sort_values(by = 'score',ascending=False).head(8)
+x = animes.sort_values(by = 'popularity').head(8)
+y = animes[animes.type == 'Movie'].sort_values(by = 'popularity').head(8)
+z = animes[(animes.rating == "PG")].sort_values(by = 'popularity').head(8)
 
+best = w.to_dict('records')
 popular = x.to_dict('records')
 popular_movie = y.to_dict('records')
+children = z.to_dict('records')
 
 
 @app.route('/', methods=['GET', 'POST'])
 def predict():
   if request.method == "GET":
-    return render_template('index.html', popular=popular,popular_movie = popular_movie)
+    return render_template('index.html', popular=popular,popular_movie = popular_movie,children = children, best = best)
 
   else:
     anime = request.form.get("watched")
