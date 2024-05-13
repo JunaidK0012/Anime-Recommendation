@@ -2,3 +2,4 @@ flask
 scikit-learn
 pandas
 spacy
+tensorflow == 2.15.0

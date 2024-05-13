@@ -1,142 +1,159 @@
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: url("gojo2.png"); /* Replace "sasuke.jpg" with the actual path to your image */
-    background-size: cover;
-    background-position: center;
-    background-repeat:repeat;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("Screenshot (123).png"); /* Replace "sasuke.jpg" with the actual path to your image */
+  background-size: 1300px 180px;
+  background-position: top;
+  background-repeat:no-repeat;
+  background-color: black;
 
-  }
-  
-  header {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 100;
-    font-size: large;
-    text-align: center;
-    color: aliceblue;
-  }
-  
-  h1 {
-    font-size: 2em;
-    margin-bottom: 0;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  .search-bar {
-    margin-bottom: 20px;
-    margin-left: 370px;
-    padding-top: 20px;
-  }
-  
-  .search-bar label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .search-bar select,
-  .search-bar input[type="text"] {
-    width: 35%;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .search-bar button {
-    background-color: #e40f0f;
-    color: white;
-    padding: 10px 25px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .recommendations {
-    border-top: 1px solid #ccc;
-    padding-top: 15px;
-    margin-top: 100px;
-  }
-  
-  .recommendations h2 {
-    margin-bottom: 8px;
-  }
-  
-  #recommendation-list {
-    list-style: none;
-    padding: 5px;
-    display: flex; /* Make items display side-by-side */
-  }
-  
-  #recommendation-list li.recommendation-item {
-    margin-bottom: 5px; /* Adjust spacing between items */
-    width: 40%; /* Adjust width based on desired number of images (change 20% as needed) */
-  }
-  
-  #recommendation-list li.recommendation-item img {
-    width: 90%; /* Set image width to match recommendation item width */
-    height: 180px; /* Maintain aspect ratio */
-    border-radius: 5px;
-  }
-  
-  .recommendation-title {
-   
-    margin-top: 5px; /* Add spacing between image and title */
-    text-align:center; /* Center title text */
-    font-family: 'Times New Roman', Times, serif;
-    color: aliceblue;
-    font-size: small;
-  }
 
-  h2{
-    color: aliceblue;
-  }
+}
 
-  .selected-anime {
-    /* Use flexbox for layout */
-    display: flex;
-    /* Align items vertically in the center */
-    margin: 10px;
-    
-    color:aliceblue;
-    font-size:large;
+header {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 100;
+  font-size: large;
+  text-align: center;
+  color: aliceblue;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 370px;
+  padding-top: 20px;
+}
+
+.search-bar label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.search-bar select,
+.search-bar input[type="text"] {
+  width: 35%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.search-bar button {
+  background-color: #e40f0f;
+  color: white;
+  padding: 10px 25px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.recommendations {
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+  margin-top: 50px;
+}
+
+
+
+#recommendation-list {
+  list-style: none;
+  padding: 3px;
+  display: flex; /* Make items display side-by-side */
+  flex-wrap: wrap; /* Wrap items onto multiple rows */
+  justify-content: space-between;
+  width: 100%;
+}
+
+#recommendation-list li.recommendation-item {
+  margin-bottom: 2px; /* Adjust spacing between items */
+  width: 12.5%; /* Adjust width based on desired number of images (change 20% as needed) */
+  padding: 3px;
+  transition: transform 0.3s ease;
+}
+#recommendation-list li.recommendation-item:hover {
+  /* Scale the item up to create a "pop up" effect */
+  transform: scale(1.1);
+}
+
+#recommendation-list li.recommendation-item img {
+  width: 100%; /* Set image width to match recommendation item width */
+  height: 220px; /* Maintain aspect ratio */
+  border-radius: 5px;
+}
+
+.recommendation-title {
  
-    font-family:monospace
+  margin-top: 1px; /* Add spacing between image and title */
+  text-align: center; /* Center title text */
+  font-family:monospace;
+  color: aliceblue;
+  font-size:1.15em;
+}
+
+.recommendation-item a {
+  text-decoration: none;
+}
+
+
+h2{
+  color: aliceblue;
+}
+
+.selected-anime {
+  /* Use flexbox for layout */
+  display: flex;
+  /* Align items vertically in the center */
+  margin: 10px;
+  
+  color:aliceblue;
+  font-size:large;
+
+  font-family:monospace
 }
 
 .anime-image {
-    /* Adjust the width as needed */
-    width: 30%;
-    /* Add some space between the image and the info */
-    height: auto;
+  /* Adjust the width as needed */
+  width: 30%;
+  /* Add some space between the image and the info */
+  height: auto;
 }
 .anime-image img {
-  /* Set the width of the image */
-  width: 200px;  /* adjust as needed */
-  margin-top: 5px;
-  /* To maintain the aspect ratio of the image, 
-     you can set the height to auto */
-  height: 300px;
+/* Set the width of the image */
+width: 200px;  /* adjust as needed */
+margin-top: 5px;
+/* To maintain the aspect ratio of the image, 
+   you can set the height to auto */
+height: 300px;
 }
 
 
 
 .anime-info {
-  width: 100%;
-   
-  margin-top: -20px;
-  margin-left: -40px;
-  
+width: 100%;
+ 
+margin-top: -20px;
+margin-left: -40px;
+
 }
 
 .anime-details {
-  list-style: none;
-  padding: 0;
-  margin: 0; /* Remove default list styling */
+list-style: none;
+padding: 0;
+margin: 0; /* Remove default list styling */
 }
 
 
 /* Show the anime-trailer div only when there's a link */
 .anime-trailer.has-trailer {
-  display: block;
+display: block;
 }
+
+

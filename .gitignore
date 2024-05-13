@@ -160,6 +160,5 @@ cython_debug/
 #.idea/
 
 
-anime.pkl 
-similarity.pkl 
-anime_data.csv
+model/
+data/

@@ -57,8 +57,8 @@
             <input type="hidden" name="watched" value="{{ recommendation.Name }}">
             <a href="#" onclick="submitForm(this)">
               <img src="{{ recommendation.Image }}" alt="{{ recommendation['Name'] }}">
-            </a>
             <h3 class="recommendation-title">{{ recommendation.Name }}</h3>
+          </a>
           </form>
         </li>
       {% endfor %}

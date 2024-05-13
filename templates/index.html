@@ -12,6 +12,7 @@
   </header>
   <main>
     
+    
     <section class="search-bar">
       <form id="search-form" action="{{ url_for('predict') }}" method="post">
         <input type="text" name="watched" id="watched" placeholder="Enter anime title">
@@ -19,6 +20,19 @@
       </form>
     </section>
     <section class="recommendations">
+
+      <h2>Recommended For You</h2>
+      <ul id="recommendation-list">
+        {% for anime in mf_rating %}
+          <li class="recommendation-item">
+            <a href="#" onclick="setWatchedAndSubmit('{{ anime.title }}')">
+              <img src="{{ anime['image'] }}" alt="{{ anime.title }}">
+            <h3 class="recommendation-title">{{ anime.title }}</h3>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+
       <h2>Highest Rated</h2>
       <ul id="recommendation-list">
         {% for anime in best %}
