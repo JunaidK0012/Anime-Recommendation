@@ -35,20 +35,20 @@ def personal_recommendation(predictions,data,watched_anime):
 
 def user_anime_recommendations(anime_name,similarity_matrix,data,watched_anime,prediction):
     
-    anime_id = data[data.title == anime_name].index[0]
-    cb_similarity = similarity_matrix[anime_id]
+    anime_index = data[data.title == anime_name].index[0]
+    cb_similarity = similarity_matrix[anime_index]
     
     ratings = 0.4*cb_similarity + 0.6*prediction
     top_anime_index = ratings.argsort()[-50:][::-1]
-    mask = np.isin(top_anime_index, watched_anime)
+    mask = np.isin(top_anime_index, watched_anime) | (top_anime_index == anime_index)
     top_unwatched_anime_index = top_anime_index[~mask]
 
     recommended_animes = []
-    for i in top_unwatched_anime_index:
+    for i in top_unwatched_anime_index[:21]:
         anime_data = data.iloc[i]
         recommended_animes.append({'Name': anime_data.title, 'Image': anime_data.image})
         
-    return recommended_animes[:21]
+    return recommended_animes
     
     
 
