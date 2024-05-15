@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+  <h1>Oops! An error occurred.</h1>
+  <p>We encountered a problem while processing your request.</p>
+  {% if error_message %}
+    <p>{{ error_message }}</p>
+  {% endif %}
+  <p>Please try again later or contact us for assistance.</p>
+  <a href="/">Home</a>  </body>
+</body>
+</html>

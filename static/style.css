@@ -29,9 +29,9 @@ main {
 }
 
 .search-bar {
-  margin-bottom: 20px;
+
   margin-top: 20px;
-  margin-left: 370px;
+  margin-left: 30%;
   padding-top: 20px;
 }
 
@@ -57,8 +57,8 @@ main {
 
 .recommendations {
   border-top: 1px solid #ccc;
-  padding-top: 15px;
-  margin-top: 50px;
+  padding-top: 5px;
+  margin-top: 20px;
 }
 
 
@@ -154,6 +154,32 @@ margin: 0; /* Remove default list styling */
 /* Show the anime-trailer div only when there's a link */
 .anime-trailer.has-trailer {
 display: block;
+}
+
+
+.genre-filter ul {
+  justify-content:center; 
+  width: 70%;
+  margin-left: 15%;
+}
+
+.genre-button {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid #000000;
+  border-radius: 25px;
+  margin-bottom: 4px;
+  text-decoration: none;
+  color: #333;
+  font-size: 1.1em; 
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out; 
+}
+
+.genre-button:hover {
+  background-color: #000000;
+  color: white;
 }
 
 

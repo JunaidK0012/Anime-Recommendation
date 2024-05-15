@@ -24,7 +24,13 @@
             <li>Episodes: {{ selected['episodes'] }}</li>
             <li>Type: {{ selected['type'] }}</li>
             <li>Duration: {{ selected['duration'] }}</li>
-           <li >Genres: {{ selected['genres']  }}</li>
+            <li>Genres: 
+              
+              {% for genre in selected['genres'].split(',') %}
+              <a href="{{ url_for('get_animes_by_genre',genre=genre) }}" style="text-decoration: none;color: aliceblue; display: inline-block; padding: 2px; margin: 2px; border: 1px solid #ddd;">{{ genre }}</a>
+                {% if not loop.last %} {% endif %}
+              {% endfor %}
+            </li>
            <li >Rating: {{ selected['rating']  }}</li>
            <li >Score: {{ selected['score']  }}</li>
            <li >Themes: {{ selected['themes']  }}</li>
