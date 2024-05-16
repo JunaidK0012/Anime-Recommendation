@@ -59,9 +59,8 @@
       <ul id="recommendation-list">
         {% for recommendation in recommendations %}
         <li class="recommendation-item">
-          <form action="{{ url_for('predict') }}" method="post">
-            <input type="hidden" name="watched" value="{{ recommendation.Name }}">
-            <a href="#" onclick="submitForm(this)">
+          <a href="{{ url_for('anime_recommendations', watched = recommendation.Name) }}">
+            
               <img src="{{ recommendation.Image }}" alt="{{ recommendation['Name'] }}">
             <h3 class="recommendation-title">{{ recommendation.Name }}</h3>
           </a>
@@ -72,10 +71,6 @@
       </ul>
     </section>
   </main>
-  <script>
-    function submitForm(element) {
-      element.parentElement.submit(); // Submit the parent form of the clicked element
-    }
-    </script>
+
 </body>
 </html>

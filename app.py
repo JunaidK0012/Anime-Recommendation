@@ -61,8 +61,11 @@ def predict():
         return render_template('home.html' ,genres = genres, popular=popular, popular_movie=popular_movie,
                                    children=children, best=best, mf_rating=rec_for_you)
 
-    else:
-        anime = request.form.get("watched")
+
+@app.route("/animes" , methods = ['GET','POST'])
+def anime_recommendations():
+    if request.method == "GET":
+        anime = request.args.get("watched")
         if anime:
             sel = selected_anime(anime, animes)
             predictions = user_data_storage['predictions'] 

@@ -19,9 +19,8 @@
       <ul id="recommendation-list">
         {% for anime in animes %}
           <li class="recommendation-item">
-            <form action="{{ url_for('predict') }}" method="post">
-              <input type="hidden" name="watched" value="{{ anime.title }}">
-              <a href="#" onclick="submitForm(this)">
+
+              <a href="{{ url_for('anime_recommendations', watched= anime.title) }}">
               <img src="{{ anime['image'] }}" alt="{{ anime.title }}">
             <h3 class="recommendation-title">{{ anime.title }}</h3>
             </a>
