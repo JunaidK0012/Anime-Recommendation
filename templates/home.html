@@ -15,14 +15,14 @@
 
 
     <section class="search-bar">
-      <form id="search-form" action="{{ url_for('predict') }}" method="post">
+      <form id="search-form" action="{{ url_for('anime_recommendations') }}">
         <input type="text" name="watched" id="watched" placeholder="Enter anime title">
         <button type="submit">Get Recommendations</button>
       </form>
     </section>
     
     <section class="genre-filter">
-      <ul style="display: flex; flex-wrap: wrap; list-style: none; padding: 2px;">
+      <ul style="display: flex; flex-wrap: wrap; list-style: none;">
         {% for genre in genres %} 
         <li class="genre-item"> 
             <a href="{{ url_for('get_animes_by_genre',genre=genre) }}" class="genre-button">{{ genre }}</a>

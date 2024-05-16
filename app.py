@@ -1,10 +1,10 @@
-from flask import Flask,render_template,request,redirect,url_for
+from flask import Flask,render_template,request,redirect,url_for,jsonify
 import pickle
 import pandas
 from tensorflow import keras
-from utils import user_anime_recommendations,selected_anime,user_embedding,personal_recommendation
+from utils import user_anime_recommendations,selected_anime,user_embedding,personal_recommendation,reviews_pred
 import numpy as np
-
+import requests
 
 
 
@@ -65,16 +65,45 @@ def predict():
 @app.route("/animes" , methods = ['GET','POST'])
 def anime_recommendations():
     if request.method == "GET":
-        anime = request.args.get("watched")
-        if anime:
-            sel = selected_anime(anime, animes)
-            predictions = user_data_storage['predictions'] 
-            watched_anime = user_data_storage['watched_anime']
-            ra = user_anime_recommendations(anime, similarity, animes, watched_anime, predictions)
-            return render_template('page.html', selected=sel, recommendations=ra)
-        else:
-            # Handle case where no anime is selected in the POST request
-            return render_template('page.html', selected=None, recommendations=[])
+        anime = (request.args.get("watched") or request.form.get("watched"))
+        try:
+            if anime:
+                sel = selected_anime(anime, animes)
+                predictions = user_data_storage['predictions'] 
+                watched_anime = user_data_storage['watched_anime']
+                ra = user_anime_recommendations(anime, similarity, animes, watched_anime, predictions)
+
+                return render_template('page.html', selected=sel, recommendations=ra)
+            else:
+                # Handle case where no anime is selected in the POST request
+                return render_template('page.html', selected=None, recommendations=[])
+        except:
+            return render_template('error.html',error_message="No such anime available")
+
+@app.route("/get_reviews",methods=['GET'])
+def get_reviews():
+    anime_id = int(request.args.get("anime-id"))
+    api_url = f"https://api.jikan.moe/v4/anime/{anime_id}/reviews"
+    response = requests.get(api_url)
+    data = response.json()
+    reviews = []
+    sentiments = []
+    if data['data']:  # Check if there are reviews
+        for review_data in data['data']:
+            review = review_data['review']
+            senti = reviews_pred(review)  # Assuming reviews_pred is your sentiment analysis function
+            reviews.append(review)
+            sentiments.append(senti)
+    else:
+        reviews.append("No reviews found")
+        sentiments.append("")
+    return jsonify({"reviews": reviews, "sentiments": sentiments})  # Return JSON data
+
+
+
+
+
+
 
 
 @app.route("/get_animes_by_genre", methods=["GET","POST"])

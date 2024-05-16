@@ -33,8 +33,9 @@
             </li>
            <li >Rating: {{ selected['rating']  }}</li>
            <li >Score: {{ selected['score']  }}</li>
-           <li >Themes: {{ selected['themes']  }}</li>
-
+            {% if selected['themes'] != "unknown_theme" %}
+            <li >Themes: {{ selected['themes']  }}</li>
+            {% endif %}
 
             <li><a href="{{ selected['url'] }}" target="_blank">For more info....</a></li>
 
@@ -43,7 +44,7 @@
           {% if selected['trailer'] != "no_trailer" %}
           <div class="anime-trailer">
             <h2>Trailer</h2>
-            <iframe width="450" height="250" src={{ selected['trailer'] }} frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="450" height="250" src={{ selected['trailer'] }} frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture" allowfullscreen onerror="this.style.display = 'none'"></iframe>
           </div>
           {% endif %}
 
@@ -70,6 +71,73 @@
       
       </ul>
     </section>
+    <section class = 'reviews'>
+      <form action="/get_reviews" method="get">
+          <input type="hidden" name="anime-id" value="{{ selected['mal_id'] }}">
+          <button type="submit">Get Reviews</button>
+      </form>
+      <div id="reviewBox"></div>
+  </section>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("button").click(function(e){
+        e.preventDefault();  // Prevent the form from submitting normally
+        $.ajax({
+          url: "/get_reviews",
+          type: "get", //send it through get method
+          data: { 
+            "anime-id": "{{ selected['mal_id'] }}"
+          },
+          success: function(response) {
+            // Hide the button
+            $("button").hide();
+            
+            // Clear previous reviews and sentiments
+            $("#reviewBox").empty();
+            
+            // Iterate over each review and sentiment
+            for (var i = 0; i < response.reviews.length; i++) {
+              // Create a new div for the review and sentiment
+              var reviewDiv = $("<div></div>").addClass("review-box");
+              
+              // Create a new paragraph for the review and sentiment
+              var reviewPara = $("<p></p>").text(response.reviews[i]);
+              var sentiPara = $("<p></p>").text(response.sentiments[i]);
+              
+              // Change the color of the review based on the sentiment
+              if (response.sentiments[i] == 'positive') {
+                reviewPara.addClass('positive');
+              } else if (response.sentiments[i] == 'negative') {
+                reviewPara.addClass('negative');
+              }
+              
+              // Append the review and sentiment to the review div
+              reviewDiv.append(reviewPara, sentiPara);
+              
+              // Append the review div to the review box
+              $("#reviewBox").append(reviewDiv);
+            }
+          },
+          error: function(xhr) {
+            //Do Something to handle error
+            console.log(xhr);
+          }
+        });
+      });
+    });
+    </script>
+    
+
+
+
+
+ 
+  
+
+  
+
   </main>
 
 </body>

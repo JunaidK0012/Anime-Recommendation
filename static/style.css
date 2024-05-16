@@ -30,9 +30,10 @@ main {
 
 .search-bar {
 
-  margin-top: 20px;
+  margin-top: 25px;
   margin-left: 30%;
-  padding-top: 20px;
+
+  
 }
 
 .search-bar label {
@@ -122,6 +123,7 @@ h2{
 .anime-image {
   /* Adjust the width as needed */
   width: 30%;
+  
   /* Add some space between the image and the info */
   height: auto;
 }
@@ -129,12 +131,16 @@ h2{
 /* Set the width of the image */
 width: 200px;  /* adjust as needed */
 margin-top: 5px;
+border-radius: 5px;
 /* To maintain the aspect ratio of the image, 
    you can set the height to auto */
 height: 300px;
 }
 
 
+.anime-info h3{
+  font-size: larger;
+}
 
 .anime-info {
 width: 100%;
@@ -160,7 +166,12 @@ display: block;
 .genre-filter ul {
   justify-content:center; 
   width: 70%;
-  margin-left: 15%;
+  margin-left: 14%;
+
+}
+.genre-item 
+{
+  padding: 3px;
 }
 
 .genre-button {
@@ -182,4 +193,50 @@ display: block;
   color: white;
 }
 
+.error{
+  margin: 50px;
+  padding: 10px;
+}
+.error h1{
+  color: aliceblue;
+  text-align: center;
+  font-size: 3em;
 
+}
+
+.error p {
+    color: aliceblue;
+    text-align: center;
+    font-size: 2em;
+}
+
+.error a{
+  font-size: x-large;
+  margin-left: 44%;
+}
+
+.review-box {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    margin-bottom: 10px;
+    padding: 5px;
+    overflow:auto;
+    height: 180px;
+    background-color: #f9f9f9;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.review-box p {
+    font-size: 15px;
+   
+}
+
+.review-box .positive {
+    color: green;
+}
+
+.review-box .negative {
+    color: red;
+}

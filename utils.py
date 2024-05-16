@@ -2,9 +2,12 @@ import pickle
 import pandas
 from tensorflow import keras
 import numpy as np
+import re
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
 
-
-
+tokenizer = pickle.load(open('model/tokenizer.pkl','rb'))
+model = keras.models.load_model('model/reviews_sentiment.h5')
 
 def user_embedding(user_data,user_id,model):
     anime_ids = np.array(list(set(user_data.anime_id_encoded)))
@@ -57,3 +60,27 @@ def selected_anime(anime_name,data):
     sel = data[data.title == anime_name]
     return sel.to_dict('records')[0]
 
+
+def preclean(text):
+    text = re.sub(r'<[^>]*>', '', text)
+    text = re.sub(r'[^A-Za-z]+', ' ', text)
+    text = re.sub(r' +', ' ' , text)
+    text = text.lower()
+    return text
+
+import spacy
+nlp = spacy.load('en_core_web_lg')
+def clean(text):
+    doc = nlp(text)
+    return ' '.join(token.lemma_ for token in doc if not token.is_stop and not token.is_oov)
+
+def reviews_pred(text):
+    text = preclean(text)
+    text = clean(text)
+    input_text = tokenizer.texts_to_sequences([text])
+    padded_input = pad_sequences(input_text,maxlen=150,padding='post')
+    x = int(np.round(model.predict(padded_input)[0]))
+    if x==0:
+        return 'negative'
+    else:
+        return 'positive'
