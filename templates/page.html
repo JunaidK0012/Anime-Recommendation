@@ -21,7 +21,8 @@
           <h3>{{ selected['title'] }}</h3>
           <p>{{ selected['synopsis'] }}</p>
           <ul class="anime-details">
-            <li>Episodes: {{ selected['episodes'] }}</li>
+             <li>Episodes: {{ selected['episodes'] }}</li>
+      
             <li>Type: {{ selected['type'] }}</li>
             <li>Duration: {{ selected['duration'] }}</li>
             <li>Genres: 
@@ -44,7 +45,7 @@
           {% if selected['trailer'] != "no_trailer" %}
           <div class="anime-trailer">
             <h2>Trailer</h2>
-            <iframe width="450" height="250" src={{ selected['trailer'] }} frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture" allowfullscreen onerror="this.style.display = 'none'"></iframe>
+            <iframe width="450" height="250" src={{ selected['trailer'] }} frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
           </div>
           {% endif %}
 
@@ -74,29 +75,33 @@
     <section class = 'reviews'>
       <form action="/get_reviews" method="get">
           <input type="hidden" name="anime-id" value="{{ selected['mal_id'] }}">
-          <button type="submit">Get Reviews</button>
+          <button type="submit">Reviews</button>
       </form>
       <div id="reviewBox"></div>
   </section>
   
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-    $(document).ready(function(){
-      $("button").click(function(e){
-        e.preventDefault();  // Prevent the form from submitting normally
-        $.ajax({
-          url: "/get_reviews",
-          type: "get", //send it through get method
-          data: { 
-            "anime-id": "{{ selected['mal_id'] }}"
-          },
-          success: function(response) {
-            // Hide the button
-            $("button").hide();
-            
-            // Clear previous reviews and sentiments
-            $("#reviewBox").empty();
-            
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("button").click(function(e){
+      e.preventDefault();  // Prevent the form from submitting normally
+      $.ajax({
+        url: "/get_reviews",
+        type: "get", //send it through get method
+        data: { 
+          "anime-id": "{{ selected['mal_id'] }}"
+        },
+        success: function(response) {
+          // Hide the button
+          $("button").hide();
+          
+          // Clear previous reviews and sentiments
+          $("#reviewBox").empty();
+          
+          // Check if there are no reviews
+          if (response.reviews[0] == "No reviews found") {
+            $("#reviewBox").append("<p class='no-reviews'>No reviews found</p>");
+          } else {
             // Iterate over each review and sentiment
             for (var i = 0; i < response.reviews.length; i++) {
               // Create a new div for the review and sentiment
@@ -104,7 +109,7 @@
               
               // Create a new paragraph for the review and sentiment
               var reviewPara = $("<p></p>").text(response.reviews[i]);
-              var sentiPara = $("<p></p>").text(response.sentiments[i]);
+              
               
               // Change the color of the review based on the sentiment
               if (response.sentiments[i] == 'positive') {
@@ -114,21 +119,22 @@
               }
               
               // Append the review and sentiment to the review div
-              reviewDiv.append(reviewPara, sentiPara);
+              reviewDiv.append(reviewPara);
               
               // Append the review div to the review box
               $("#reviewBox").append(reviewDiv);
             }
-          },
-          error: function(xhr) {
-            //Do Something to handle error
-            console.log(xhr);
           }
-        });
+        },
+        error: function(xhr) {
+          //Do Something to handle error
+          console.log(xhr);
+        }
       });
     });
-    </script>
-    
+  });
+  </script>
+  
 
 
 

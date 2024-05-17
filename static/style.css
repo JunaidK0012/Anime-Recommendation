@@ -68,7 +68,7 @@ main {
   list-style: none;
   padding: 3px;
   display: flex; /* Make items display side-by-side */
-  flex-wrap: wrap; /* Wrap items onto multiple rows */
+  flex-wrap:wrap; /* Wrap items onto multiple rows */
   justify-content: space-between;
   width: 100%;
 }
@@ -78,6 +78,7 @@ main {
   width: 12.5%; /* Adjust width based on desired number of images (change 20% as needed) */
   padding: 3px;
   transition: transform 0.3s ease;
+
 }
 #recommendation-list li.recommendation-item:hover {
   /* Scale the item up to create a "pop up" effect */
@@ -112,8 +113,8 @@ h2{
   /* Use flexbox for layout */
   display: flex;
   /* Align items vertically in the center */
-  margin: 10px;
-  
+
+ 
   color:aliceblue;
   font-size:large;
 
@@ -129,25 +130,26 @@ h2{
 }
 .anime-image img {
 /* Set the width of the image */
-width: 200px;  /* adjust as needed */
-margin-top: 5px;
+width: 250px ; /* adjust as needed */
+margin-top: 25px;
 border-radius: 5px;
 /* To maintain the aspect ratio of the image, 
    you can set the height to auto */
-height: 300px;
+height: auto;
 }
 
 
 .anime-info h3{
-  font-size: larger;
+  font-size: 25px;
 }
 
 .anime-info {
 width: 100%;
- 
-margin-top: -20px;
-margin-left: -40px;
+border: 1px solid #8c8c8c;
+border-radius: 10px;
+padding: 20px;
 
+box-shadow: 5px 5px 20px rgba(168, 168, 168, 0.7);
 }
 
 .anime-details {
@@ -158,7 +160,7 @@ margin: 0; /* Remove default list styling */
 
 
 /* Show the anime-trailer div only when there's a link */
-.anime-trailer.has-trailer {
+.anime-trailer {
 display: block;
 }
 
@@ -215,21 +217,36 @@ display: block;
   margin-left: 44%;
 }
 
+.reviews button{
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 20px;
+  margin-left: 44%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.reviews button:hover {
+  transform: scale(1.1);
+}
+
 .review-box {
     border: 1px solid #ddd;
     border-radius: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.15);
     margin-bottom: 10px;
     padding: 5px;
     overflow:auto;
-    height: 180px;
-    background-color: #f9f9f9;
+    max-height: 180px;
     width: 80%;
     margin-left: 10%;
+    background-color: aliceblue;
 }
 
 .review-box p {
     font-size: 15px;
+    margin-top: -3px;
+    padding: 5px;
    
 }
 
@@ -239,4 +256,27 @@ display: block;
 
 .review-box .negative {
     color: red;
+}
+.review-box::-webkit-scrollbar {
+  width: 5px;  /* for vertical scrollbars */
+ 
+}
+
+.review-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.review-box::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.review-box::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.no-reviews {
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
