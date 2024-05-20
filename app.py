@@ -53,32 +53,29 @@ def start():
             # Handle case where no user ID is submitted
             return render_template('landing.html', error="Please enter a valid user ID")
 
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/home')
 def predict():
-    if request.method == 'GET':
-        rec_for_you = user_data_storage['rec']
-        # If no user ID was submitted on landing page, redirect
-        return render_template('home.html' ,genres = genres, popular=popular, popular_movie=popular_movie,
-                                   children=children, best=best, mf_rating=rec_for_you)
+    rec_for_you = user_data_storage['rec']
+    # If no user ID was submitted on landing page, redirect
+    return render_template('home.html' ,genres = genres, popular=popular, popular_movie=popular_movie,
+                                children=children, best=best, mf_rating=rec_for_you)
 
 
-@app.route("/animes" , methods = ['GET','POST'])
+@app.route("/animes" , methods = ['GET'])
 def anime_recommendations():
-    if request.method == "GET":
-        anime = (request.args.get("watched") or request.form.get("watched"))
-        try:
-            if anime:
-                sel = selected_anime(anime, animes)
-                predictions = user_data_storage['predictions'] 
-                watched_anime = user_data_storage['watched_anime']
-                ra = user_anime_recommendations(anime, similarity, animes, watched_anime, predictions)
-
-                return render_template('page.html', selected=sel, recommendations=ra)
-            else:
-                # Handle case where no anime is selected in the POST request
-                return render_template('page.html', selected=None, recommendations=[])
-        except:
-            return render_template('error.html',error_message="No such anime available")
+    anime = request.args.get("watched") 
+    try:
+        if anime:
+            sel = selected_anime(anime, animes)
+            predictions = user_data_storage['predictions'] 
+            watched_anime = user_data_storage['watched_anime']
+            ra = user_anime_recommendations(anime, similarity, animes, watched_anime, predictions)
+            return render_template('page.html', selected=sel, recommendations=ra)
+        else:
+            # Handle case where no anime is selected in the POST request
+            return render_template('page.html', selected=None, recommendations=[])
+    except:
+        return render_template('error.html',error_message="No such anime available")
 
 @app.route("/get_reviews",methods=['GET'])
 def get_reviews():
@@ -106,20 +103,21 @@ def get_reviews():
 
 
 
-@app.route("/get_animes_by_genre", methods=["GET","POST"])
+@app.route("/get_animes_by_genre", methods=["GET"])
 def get_animes_by_genre():
-  selected_genre = request.args.get("genre")
-  if selected_genre:
-    try:
-        filtered_anime = animes[animes.genres.str.contains(selected_genre)].sort_values(by='popularity')
-        filtered_anime = filtered_anime.to_dict("records")
-        return render_template('genre.html',genre = selected_genre,animes = filtered_anime)
-    except (KeyError, ValueError) as e:
-      # Handle errors gracefully, e.g., log the error and return an informative message
-      return render_template('error.html', error_message="An error occurred while processing your request.")
-  else:
-    # Handle invalid or missing genre selection
-    return render_template('error.html', error_message="Invalid genre selection.")
+    if request.method == "GET":
+        selected_genre = request.args.get("genre")
+        if selected_genre:
+            try:
+                filtered_anime = animes[animes.genres.str.contains(selected_genre)].sort_values(by='popularity')
+                filtered_anime = filtered_anime.to_dict("records")
+                return render_template('genre.html',genre = selected_genre,animes = filtered_anime)
+            except (KeyError, ValueError) as e:
+            # Handle errors gracefully, e.g., log the error and return an informative message
+                return render_template('error.html', error_message="An error occurred while processing your request.")
+        else:
+            # Handle invalid or missing genre selection
+            return render_template('error.html', error_message="Invalid genre selection.")
 
 
 

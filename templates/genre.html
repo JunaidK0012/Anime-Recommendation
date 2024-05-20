@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime Recommendation System</title>
-  <link rel="stylesheet" href="/static/style.css"/>
+  <link rel="stylesheet" href="/static/style.css" />
 </head>
+
 <body>
   <header>
     <h1>ANIME RECOMMENDATION SYSTEM</h1>
   </header>
   <main>
-    
+
 
     <section class="recommendations">
 
       <h2>{{ genre }}</h2>
       <ul id="recommendation-list">
         {% for anime in animes %}
-          <li class="recommendation-item">
+        <li class="recommendation-item">
 
-              <a href="{{ url_for('anime_recommendations', watched= anime.title) }}">
-              <img src="{{ anime['image'] }}" alt="{{ anime.title }}">
+          <a href="{{ url_for('anime_recommendations', watched= anime.title) }}">
+            <img src="{{ anime['image'] }}" alt="{{ anime.title }}">
             <h3 class="recommendation-title">{{ anime.title }}</h3>
-            </a>
-            </form>
-          </li>
+          </a>
+          </form>
+        </li>
         {% endfor %}
       </ul>
 
@@ -36,9 +38,10 @@
       function submitForm(element) {
         element.parentElement.submit(); // Submit the parent form of the clicked element
       }
-      </script>
+    </script>
 
 
   </main>
 </body>
+
 </html>

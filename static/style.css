@@ -2,10 +2,11 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url("Screenshot (123).png"); /* Replace "sasuke.jpg" with the actual path to your image */
+  background-image: url("Screenshot (123).png");
+  /* Replace "sasuke.jpg" with the actual path to your image */
   background-size: 1300px 180px;
   background-position: top;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-color: black;
 
 
@@ -33,7 +34,7 @@ main {
   margin-top: 25px;
   margin-left: 30%;
 
-  
+
 }
 
 .search-bar label {
@@ -67,37 +68,46 @@ main {
 #recommendation-list {
   list-style: none;
   padding: 3px;
-  display: flex; /* Make items display side-by-side */
-  flex-wrap:wrap; /* Wrap items onto multiple rows */
+  display: flex;
+  /* Make items display side-by-side */
+  flex-wrap: wrap;
+  /* Wrap items onto multiple rows */
   justify-content: space-between;
   width: 100%;
 }
 
 #recommendation-list li.recommendation-item {
-  margin-bottom: 2px; /* Adjust spacing between items */
-  width: 12.5%; /* Adjust width based on desired number of images (change 20% as needed) */
+  margin-bottom: 2px;
+  /* Adjust spacing between items */
+  width: 12.5%;
+  /* Adjust width based on desired number of images (change 20% as needed) */
   padding: 3px;
   transition: transform 0.3s ease;
 
 }
+
 #recommendation-list li.recommendation-item:hover {
   /* Scale the item up to create a "pop up" effect */
   transform: scale(1.1);
 }
 
 #recommendation-list li.recommendation-item img {
-  width: 100%; /* Set image width to match recommendation item width */
-  height: 220px; /* Maintain aspect ratio */
+  width: 100%;
+  /* Set image width to match recommendation item width */
+  height: 220px;
+  /* Maintain aspect ratio */
   border-radius: 5px;
 }
 
 .recommendation-title {
- 
-  margin-top: 1px; /* Add spacing between image and title */
-  text-align: center; /* Center title text */
-  font-family:monospace;
+
+  margin-top: 1px;
+  /* Add spacing between image and title */
+  text-align: center;
+  /* Center title text */
+  font-family: monospace;
   color: aliceblue;
-  font-size:1.15em;
+  font-size: 1.15em;
 }
 
 .recommendation-item a {
@@ -105,7 +115,7 @@ main {
 }
 
 
-h2{
+h2 {
   color: aliceblue;
 }
 
@@ -114,65 +124,68 @@ h2{
   display: flex;
   /* Align items vertically in the center */
 
- 
-  color:aliceblue;
-  font-size:large;
 
-  font-family:monospace
+  color: aliceblue;
+  font-size: large;
+
+  font-family: monospace
 }
 
 .anime-image {
   /* Adjust the width as needed */
   width: 30%;
-  
+
   /* Add some space between the image and the info */
   height: auto;
 }
+
 .anime-image img {
-/* Set the width of the image */
-width: 250px ; /* adjust as needed */
-margin-top: 25px;
-border-radius: 5px;
-/* To maintain the aspect ratio of the image, 
+  /* Set the width of the image */
+  width: 250px;
+  /* adjust as needed */
+  margin-top: 25px;
+  border-radius: 5px;
+  /* To maintain the aspect ratio of the image, 
    you can set the height to auto */
-height: auto;
+  height: auto;
 }
 
 
-.anime-info h3{
+.anime-info h3 {
   font-size: 25px;
 }
 
 .anime-info {
-width: 100%;
-border: 1px solid #8c8c8c;
-border-radius: 10px;
-padding: 20px;
+  width: 100%;
+  border: 1px solid #8c8c8c;
+  border-radius: 10px;
+  padding: 20px;
 
-box-shadow: 5px 5px 20px rgba(168, 168, 168, 0.7);
+  box-shadow: 5px 5px 20px rgba(168, 168, 168, 0.7);
 }
 
 .anime-details {
-list-style: none;
-padding: 0;
-margin: 0; /* Remove default list styling */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* Remove default list styling */
 }
 
 
 /* Show the anime-trailer div only when there's a link */
 .anime-trailer {
-display: block;
+  display: block;
 }
 
 
 .genre-filter ul {
-  justify-content:center; 
+  justify-content: center;
   width: 70%;
   margin-left: 14%;
 
 }
-.genre-item 
-{
+
+.genre-item {
   padding: 3px;
 }
 
@@ -184,10 +197,10 @@ display: block;
   margin-bottom: 4px;
   text-decoration: none;
   color: #333;
-  font-size: 1.1em; 
+  font-size: 1.1em;
   background-color: #ffffff;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out; 
+  transition: background-color 0.2s ease-in-out;
 }
 
 .genre-button:hover {
@@ -195,11 +208,12 @@ display: block;
   color: white;
 }
 
-.error{
+.error {
   margin: 50px;
   padding: 10px;
 }
-.error h1{
+
+.error h1 {
   color: aliceblue;
   text-align: center;
   font-size: 3em;
@@ -207,17 +221,17 @@ display: block;
 }
 
 .error p {
-    color: aliceblue;
-    text-align: center;
-    font-size: 2em;
+  color: aliceblue;
+  text-align: center;
+  font-size: 2em;
 }
 
-.error a{
+.error a {
   font-size: x-large;
   margin-left: 44%;
 }
 
-.reviews button{
+.reviews button {
   text-align: center;
   padding: 5px 8px;
   border-radius: 4px;
@@ -226,40 +240,43 @@ display: block;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
+
 .reviews button:hover {
   transform: scale(1.1);
 }
 
 .review-box {
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.15);
-    margin-bottom: 10px;
-    padding: 5px;
-    overflow:auto;
-    max-height: 180px;
-    width: 80%;
-    margin-left: 10%;
-    background-color: aliceblue;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.15);
+  margin-bottom: 10px;
+  padding: 5px;
+  overflow: auto;
+  max-height: 180px;
+  width: 80%;
+  margin-left: 10%;
+  background-color: aliceblue;
 }
 
 .review-box p {
-    font-size: 15px;
-    margin-top: -3px;
-    padding: 5px;
-   
+  font-size: 15px;
+  margin-top: -3px;
+  padding: 5px;
+
 }
 
 .review-box .positive {
-    color: green;
+  color: green;
 }
 
 .review-box .negative {
-    color: red;
+  color: red;
 }
+
 .review-box::-webkit-scrollbar {
-  width: 5px;  /* for vertical scrollbars */
- 
+  width: 5px;
+  /* for vertical scrollbars */
+
 }
 
 .review-box::-webkit-scrollbar-track {
