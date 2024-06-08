@@ -160,6 +160,6 @@ cython_debug/
 #.idea/
 
 
-model/
+# model/
 data/
 model-archived/
