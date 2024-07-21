@@ -3,6 +3,11 @@
 ## Description
 This project aims to build an anime recommendation system using a hybrid approach that combines matrix factorization and content-based filtering. Additionally, sentiment analysis is performed on user reviews using an LSTM model to enhance the recommendations. The backend is built using Flask.
 
+
+
+https://github.com/user-attachments/assets/dc0258b3-66b2-48b0-b50e-3ddd0ae7fc90
+
+
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
