@@ -17,7 +17,7 @@ https://github.com/user-attachments/assets/dc0258b3-66b2-48b0-b50e-3ddd0ae7fc90
 ## Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/YourUsername/anime-recommendation-system.git
+    git clone https://github.com/JunaidK0012/Anime-Recommendation.git
     ```
 2. Navigate to the project directory:
     ```bash
