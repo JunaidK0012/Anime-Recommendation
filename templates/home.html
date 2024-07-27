@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime Recommendation System</title>
   <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -13,15 +16,32 @@
     <h1>ANIME RECOMMENDATION SYSTEM</h1>
   </header>
   <main>
-
-
-
     <section class="search-bar">
       <form id="search-form" action="{{ url_for('anime_recommendations') }}" method="GET">
         <input type="text" name="watched" id="watched" placeholder="Enter anime title">
         <button type="submit">Get Recommendations</button>
       </form>
     </section>
+
+    <script>
+      $(document).ready(function () {
+        $("#watched").autocomplete({
+          source: function (request, response) {
+            $.ajax({
+              url: "/search",
+              dataType: "json",
+              data: {
+                term: request.term
+              },
+              success: function (data) {
+                response(data);
+              }
+            });
+          },
+          minLength: 2,
+        });
+      });
+    </script>
 
     <section class="genre-filter">
       <ul style="display: flex; flex-wrap: wrap; list-style: none;">

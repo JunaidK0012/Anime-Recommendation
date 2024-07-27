@@ -60,6 +60,22 @@ def predict():
     return render_template('home.html' ,genres = genres, popular=popular, popular_movie=popular_movie,
                                 children=children, best=best, mf_rating=rec_for_you)
 
+@app.route('/search', methods=['GET'])
+def search():
+    try:
+        query = request.args.get('term', '')
+        if not query:
+            return jsonify([])
+
+        # Log the type of 'animes'
+        print(f"Type of animes: {type(animes)}")
+
+        # Assuming 'animes' is a DataFrame
+        matching_animes = animes[animes['title'].str.contains(query, case=False, na=False)]['title'].tolist()
+        return jsonify(matching_animes)
+    except Exception as e:
+        print(f"Error occurred: {e}")  # Log the error to the console
+        return jsonify([]), 500  # Return an empty list and a 500 status code
 
 @app.route("/animes" , methods = ['GET'])
 def anime_recommendations():
