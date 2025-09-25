@@ -1,5 +1,9 @@
-flask
+mlflow 
+sqlite-utils
+sqlalchemy
 scikit-learn
 pandas
 spacy
-tensorflow == 2.15.0
+tensorflow == 2.15.0 
+fastapi
+uvicorn
