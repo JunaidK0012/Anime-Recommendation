@@ -25,8 +25,8 @@ https://github.com/user-attachments/assets/dc0258b3-66b2-48b0-b50e-3ddd0ae7fc90
     ```
 3. Create and activate a virtual environment (optional but recommended):
     ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    conda create -p venv python=3.8 -y
+    conda activate venv/
     ```
 4. Install dependencies:
     ```bash
