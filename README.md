@@ -14,6 +14,18 @@ https://github.com/user-attachments/assets/dc0258b3-66b2-48b0-b50e-3ddd0ae7fc90
 
 ---
 
+## 🛠️ Tech Stack  
+**Languages & Libraries**  
+- Pandas, MLflow, Sqlite
+- Scikit-learn, Spacy, TensorFlow/Keras (LSTM)  
+
+**Recommendation Techniques**  
+- Matrix Factorization (Collaborative Filtering)  
+- Content-Based Filtering (TF-IDF & cosine similarity)  
+
+**Deployment**  
+- FastAPI  
+
 ## 📂 Project Structure
 ```
 anime-recommendation-system/
