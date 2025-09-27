@@ -127,7 +127,7 @@ python app.py
 
 ## 📌 Usage
 Once both services are running:
-- **Flask (app.py)** → provides anime recommendations  
+- **FastAPI (app.py)** → provides anime recommendations  
 - **FastAPI (model_server.py)** → provides sentiment analysis for reviews  
 
 Integrate them in the frontend or API client to deliver personalized anime experiences.  
